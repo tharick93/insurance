@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stackly Insurance | Administrator Console</title>
+  <meta name="description" content="Admin management console for Stackly Insurance. Monitor revenue, manage customer accounts, approve claims, and review system analytics.">
+  <meta name="keywords" content="Stackly Insurance admin, customer management, claim approval, insurance analytics, admin panel">
+
+  <!-- Google Fonts & Font Awesome CDN -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Chart.js Library via CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body class="dashboard-body">
+
+  <div class="dashboard-layout">
+    <!-- ADMIN SIDEBAR -->
+    <aside class="dashboard-sidebar">
+      <div>
+        <div class="sidebar-header">
+          <a href="index.html" class="logo">
+            <div class="logo-icon" style="background:linear-gradient(135deg, var(--cyan-accent) 0%, var(--royal-blue) 100%);"><i class="fa-solid fa-user-gear"></i></div>
+            <div class="logo-text">Stackly<span>Admin</span></div>
+          </a>
+        </div>
+
+        <div class="menu-category">Overview</div>
+        <ul class="sidebar-menu">
+          <li><a href="#admin-overview" class="sidebar-link active"><i class="fa-solid fa-chart-line"></i> Dashboard</a></li>
+          <li><a href="#admin-customers" class="sidebar-link"><i class="fa-solid fa-users"></i> Customers</a></li>
+          <li><a href="#admin-policies" class="sidebar-link"><i class="fa-solid fa-folder-closed"></i> Policies</a></li>
+          <li><a href="#admin-claims" class="sidebar-link"><i class="fa-solid fa-file-signature"></i> Claims Desk</a></li>
+          <li><a href="#admin-analytics" class="sidebar-link"><i class="fa-solid fa-chart-pie"></i> Analytics</a></li>
+          <li><a href="#admin-reports" class="sidebar-link"><i class="fa-solid fa-file-invoice-dollar"></i> Reports</a></li>
+        </ul>
+
+        <div class="menu-category">System</div>
+        <ul class="sidebar-menu">
+          <li><a href="#admin-settings" class="sidebar-link"><i class="fa-solid fa-gear"></i> System Settings</a></li>
+          <li><a href="#" class="sidebar-link btn-admin-logout"><i class="fa-solid fa-power-off"></i> Logout</a></li>
+        </ul>
+      </div>
+
+      <!-- Admin Profile Mini -->
+      <div class="sidebar-user-mini">
+        <div class="user-avatar-mini" style="background-color:var(--cyan-accent);">AD</div>
+        <div class="user-info-mini">
+          <div class="name">System Admin</div>
+          <div class="role">admin@stackly.com</div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN WRAPPER -->
+    <div class="dashboard-main">
+      <!-- TOPBAR -->
+      <header class="dashboard-topbar">
+        <div class="topbar-left">
+          <button class="topbar-toggle" aria-label="Toggle Admin Sidebar"><i class="fa-solid fa-bars"></i></button>
+          <div class="topbar-search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" placeholder="Search customer, policy, claim ID...">
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <div class="topbar-date">Mon, Oct 5, 2026</div>
+          <button class="notification-bell" aria-label="Admin Notifications">
+            <i class="fa-regular fa-bell"></i>
+            <span class="notification-badge">5</span>
+          </button>
+          <div class="topbar-profile">
+            <svg class="topbar-avatar" viewBox="0 0 100 100">
+              <circle cx="50" cy="50" r="50" fill="#06b6d4"/>
+              <text x="50" y="58" text-anchor="middle" fill="#ffffff" font-size="32" font-weight="bold">AD</text>
+            </svg>
+            <div class="topbar-user-name">Admin Console</div>
+          </div>
+        </div>
+      </header>
+
+      <!-- CONTENT AREA -->
+      <main class="dashboard-content">
+        <!-- WELCOME HEADER -->
+        <section id="admin-overview" class="welcome-banner" style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);">
+          <div class="welcome-text">
+            <h2>Stackly Insurance Executive Console 🛡️</h2>
+            <p>Real-time corporate metrics, claims management, customer administration, and financial performance.</p>
+          </div>
+          <div>
+            <button class="btn btn-cyan btn-gen-report" data-report="Executive Performance"><i class="fa-solid fa-download"></i> Generate Master Report</button>
+          </div>
+        </section>
+
+        <!-- KPI CARDS (6 METRICS) -->
+        <div class="kpi-grid" style="grid-template-columns: repeat(3, 1fr);">
+          <div class="kpi-card">
+            <div class="kpi-info">
+              <div class="title">Total Customers</div>
+              <div class="value counter" data-target="24850">24,850</div>
+              <div class="subtext"><i class="fa-solid fa-arrow-up"></i> +12% this month</div>
+            </div>
+            <div class="kpi-icon blue"><i class="fa-solid fa-users"></i></div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-info">
+              <div class="title">Active Policies</div>
+              <div class="value counter" data-target="38420">38,420</div>
+              <div class="subtext"><i class="fa-solid fa-shield-check"></i> Across 6 Categories</div>
+            </div>
+            <div class="kpi-icon green"><i class="fa-solid fa-file-contract"></i></div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-info">
+              <div class="title">Total Premium Revenue</div>
+              <div class="value">₹105 Cr</div>
+              <div class="subtext"><i class="fa-solid fa-arrow-up"></i> +18.4% YOY</div>
+            </div>
+            <div class="kpi-icon cyan"><i class="fa-solid fa-sack-dollar"></i></div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-info">
+              <div class="title">Pending Claims</div>
+              <div class="value" id="kpiPendingClaims">14</div>
+              <div class="subtext" style="color:var(--warning-amber);"><i class="fa-solid fa-clock"></i> Requires Approval</div>
+            </div>
+            <div class="kpi-icon amber"><i class="fa-solid fa-hourglass-half"></i></div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-info">
+              <div class="title">Approved Claims</div>
+              <div class="value" id="kpiApprovedClaims">982</div>
+              <div class="subtext"><i class="fa-solid fa-check-double"></i> Verified & Paid</div>
+            </div>
+            <div class="kpi-icon green"><i class="fa-solid fa-circle-check"></i></div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-info">
+              <div class="title">Claim Satisfaction</div>
+              <div class="value">98.2%</div>
+              <div class="subtext"><i class="fa-solid fa-star"></i> Industry Leader</div>
+            </div>
+            <div class="kpi-icon blue"><i class="fa-solid fa-trophy"></i></div>
+          </div>
+        </div>
+
+        <!-- ANALYTICS CHARTS GRID -->
+        <div id="admin-analytics" class="charts-grid">
+          <!-- Revenue Line Chart -->
+          <div class="chart-card">
+            <div class="chart-header">
+              <h4>Monthly Premium Revenue (₹ Cr)</h4>
+              <span class="badge badge-active">2026 YTD</span>
+            </div>
+            <div class="chart-container">
+              <canvas id="adminRevenueChart"></canvas>
+            </div>
+          </div>
+
+          <!-- Customer Growth Line Chart -->
+          <div class="chart-card">
+            <div class="chart-header">
+              <h4>Customer Acquisition Growth</h4>
+              <span class="badge badge-active">Quarterly</span>
+            </div>
+            <div class="chart-container">
+              <canvas id="customerGrowthChart"></canvas>
+            </div>
+          </div>
+
+          <!-- Policy Category Doughnut Chart -->
+          <div class="chart-card">
+            <div class="chart-header">
+              <h4>Policy Portfolio Distribution</h4>
+              <span class="badge badge-active">6 Categories</span>
+            </div>
+            <div class="chart-container">
+              <canvas id="adminPolicyDistChart"></canvas>
+            </div>
+          </div>
+
+          <!-- Claims Analytics Bar Chart -->
+          <div class="chart-card">
+            <div class="chart-header">
+              <h4>Claims Breakdown by Category</h4>
+              <span class="badge badge-active">Approved vs Rejected</span>
+            </div>
+            <div class="chart-container">
+              <canvas id="claimsAnalyticsChart"></canvas>
+            </div>
+          </div>
+
+          <!-- Revenue by Insurance Type -->
+          <div class="chart-card" style="grid-column: span 2;">
+            <div class="chart-header">
+              <h4>Gross Revenue by Insurance Category (₹ Lakhs)</h4>
+              <span class="badge badge-active">Category Comparison</span>
+            </div>
+            <div class="chart-container">
+              <canvas id="revenueByTypeChart"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- CUSTOMER MANAGEMENT SECTION -->
+        <section id="admin-customers" class="table-card">
+          <div class="table-header">
+            <h3 class="table-title">Customer Account Directory</h3>
+            <div class="table-actions">
+              <input type="text" id="adminCustomerSearch" class="search-filter-input" placeholder="Search customer name or email...">
+              <select id="adminPolicyFilter" class="search-filter-input">
+                <option value="all">All Policies</option>
+                <option value="health">Health</option>
+                <option value="life">Life</option>
+                <option value="vehicle">Vehicle</option>
+                <option value="home">Home</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Customer ID</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Phone</th>
+                  <th>Active Policy</th>
+                  <th>Annual Premium</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="customerTableBody">
+                <tr>
+                  <td><strong>CUST-1092</strong></td>
+                  <td>Rajesh Kumar</td>
+                  <td>rajesh.k@gmail.com</td>
+                  <td>+91 98765 11223</td>
+                  <td>Health Optimum</td>
+                  <td>₹12,500</td>
+                  <td><span class="badge badge-active">Active</span></td>
+                  <td>
+                    <button class="btn-table-action btn-view btn-view-cust"><i class="fa-solid fa-eye"></i> View</button>
+                    <button class="btn-table-action btn-reject btn-delete-cust"><i class="fa-solid fa-trash"></i> Delete</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>CUST-1093</strong></td>
+                  <td>Priya Sharma</td>
+                  <td>priya.sharma@yahoo.com</td>
+                  <td>+91 98112 33445</td>
+                  <td>Term Life Secure</td>
+                  <td>₹18,000</td>
+                  <td><span class="badge badge-active">Active</span></td>
+                  <td>
+                    <button class="btn-table-action btn-view btn-view-cust"><i class="fa-solid fa-eye"></i> View</button>
+                    <button class="btn-table-action btn-reject btn-delete-cust"><i class="fa-solid fa-trash"></i> Delete</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>CUST-1094</strong></td>
+                  <td>Amit Mehta</td>
+                  <td>amit.mehta@enterprise.com</td>
+                  <td>+91 99001 55667</td>
+                  <td>Enterprise Suite</td>
+                  <td>₹59,990</td>
+                  <td><span class="badge badge-active">Active</span></td>
+                  <td>
+                    <button class="btn-table-action btn-view btn-view-cust"><i class="fa-solid fa-eye"></i> View</button>
+                    <button class="btn-table-action btn-reject btn-delete-cust"><i class="fa-solid fa-trash"></i> Delete</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>CUST-1095</strong></td>
+                  <td>Sneha Patel</td>
+                  <td>sneha.p@outlook.com</td>
+                  <td>+91 97788 99001</td>
+                  <td>Comprehensive Car</td>
+                  <td>₹8,500</td>
+                  <td><span class="badge badge-pending">Renewal Pending</span></td>
+                  <td>
+                    <button class="btn-table-action btn-view btn-view-cust"><i class="fa-solid fa-eye"></i> View</button>
+                    <button class="btn-table-action btn-reject btn-delete-cust"><i class="fa-solid fa-trash"></i> Delete</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- POLICY MANAGEMENT SECTION -->
+        <section id="admin-policies" class="table-card">
+          <div class="table-header">
+            <h3 class="table-title">Policy Registry Management</h3>
+            <button class="btn btn-primary btn-sm" onclick="showToast('Add Policy Wizard opened.', 'info');"><i class="fa-solid fa-plus"></i> Add New Policy</button>
+          </div>
+
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Policy ID</th>
+                  <th>Customer</th>
+                  <th>Insurance Type</th>
+                  <th>Coverage Limit</th>
+                  <th>Premium</th>
+                  <th>Start Date</th>
+                  <th>Expiry Date</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>POL-8821</strong></td>
+                  <td>Rajesh Kumar</td>
+                  <td>Health Optimum Shield</td>
+                  <td>₹25,00,000</td>
+                  <td>₹12,500</td>
+                  <td>15 Dec 2025</td>
+                  <td>15 Dec 2026</td>
+                  <td><span class="badge badge-active">Active</span></td>
+                </tr>
+                <tr>
+                  <td><strong>POL-9932</strong></td>
+                  <td>Priya Sharma</td>
+                  <td>Term Life Secure</td>
+                  <td>₹35,00,000</td>
+                  <td>₹18,000</td>
+                  <td>04 Jun 2025</td>
+                  <td>04 Jun 2027</td>
+                  <td><span class="badge badge-active">Active</span></td>
+                </tr>
+                <tr>
+                  <td><strong>POL-4412</strong></td>
+                  <td>Sneha Patel</td>
+                  <td>Comprehensive Car Cover</td>
+                  <td>₹10,00,000</td>
+                  <td>₹8,500</td>
+                  <td>20 Oct 2025</td>
+                  <td>20 Oct 2026</td>
+                  <td><span class="badge badge-pending">Pending</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- CLAIM MANAGEMENT SECTION (INTERACTIVE APPROVE & REJECT) -->
+        <section id="admin-claims" class="table-card">
+          <div class="table-header">
+            <h3 class="table-title">Claims Verification Desk</h3>
+            <span class="badge badge-pending">Action Needed</span>
+          </div>
+
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Claim ID</th>
+                  <th>Customer</th>
+                  <th>Policy No</th>
+                  <th>Claim Amount</th>
+                  <th>Incident Date</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="adminClaimsTableBody">
+                <tr>
+                  <td><strong>CLM-9102</strong></td>
+                  <td>Sneha Patel</td>
+                  <td>POL-4412</td>
+                  <td>₹18,500</td>
+                  <td>28 Sep 2026</td>
+                  <td><span class="badge badge-pending"><i class="fa-solid fa-spinner fa-spin"></i> Pending Approval</span></td>
+                  <td>
+                    <button class="btn-table-action btn-approve btn-approve-claim"><i class="fa-solid fa-check"></i> Approve</button>
+                    <button class="btn-table-action btn-reject btn-reject-claim"><i class="fa-solid fa-xmark"></i> Reject</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>CLM-9105</strong></td>
+                  <td>Vikram Solanki</td>
+                  <td>POL-8821</td>
+                  <td>₹62,000</td>
+                  <td>01 Oct 2026</td>
+                  <td><span class="badge badge-pending"><i class="fa-solid fa-spinner fa-spin"></i> Pending Approval</span></td>
+                  <td>
+                    <button class="btn-table-action btn-approve btn-approve-claim"><i class="fa-solid fa-check"></i> Approve</button>
+                    <button class="btn-table-action btn-reject btn-reject-claim"><i class="fa-solid fa-xmark"></i> Reject</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>CLM-9041</strong></td>
+                  <td>Rajesh Kumar</td>
+                  <td>POL-8821</td>
+                  <td>₹45,000</td>
+                  <td>10 Aug 2026</td>
+                  <td><span class="badge badge-approved"><i class="fa-solid fa-check"></i> Approved</span></td>
+                  <td>-</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- REPORTS & RECENT ACTIVITIES -->
+        <div class="charts-grid">
+          <!-- Reports Generation Cards -->
+          <div id="admin-reports" class="table-card" style="margin-bottom:0;">
+            <h4 style="font-size:1.1rem; margin-bottom:1rem;">Executive Report Generator</h4>
+            <div style="display:flex; flex-direction:column; gap:0.75rem;">
+              <div style="display:flex; align-items:center; justify-content:space-between; padding:0.75rem; background:#f8fafc; border-radius:var(--radius-sm);">
+                <div>
+                  <strong>Monthly Premium Revenue</strong>
+                  <div style="font-size:0.775rem; color:var(--text-muted);">PDF / TXT summary for Oct 2026</div>
+                </div>
+                <button class="btn btn-secondary btn-sm btn-gen-report" data-report="Monthly Premium Revenue">Generate</button>
+              </div>
+
+              <div style="display:flex; align-items:center; justify-content:space-between; padding:0.75rem; background:#f8fafc; border-radius:var(--radius-sm);">
+                <div>
+                  <strong>Customer Acquisition &amp; Retention</strong>
+                  <div style="font-size:0.775rem; color:var(--text-muted);">Growth breakdown analysis</div>
+                </div>
+                <button class="btn btn-secondary btn-sm btn-gen-report" data-report="Customer Acquisition & Retention">Generate</button>
+              </div>
+
+              <div style="display:flex; align-items:center; justify-content:space-between; padding:0.75rem; background:#f8fafc; border-radius:var(--radius-sm);">
+                <div>
+                  <strong>Claims Audit &amp; Settlement Ratio</strong>
+                  <div style="font-size:0.775rem; color:var(--text-muted);">Compliance & approval statistics</div>
+                </div>
+                <button class="btn btn-secondary btn-sm btn-gen-report" data-report="Claims Audit & Settlement Ratio">Generate</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Activity Timeline -->
+          <div class="card">
+            <h4 style="font-size:1.1rem; margin-bottom:1rem;">Real-time Activity Stream</h4>
+            <ul class="activity-list">
+              <li class="activity-item">
+                <div class="activity-icon"><i class="fa-solid fa-user-plus"></i></div>
+                <div class="activity-details">
+                  <div class="text">New Customer CUST-1095 registered</div>
+                  <div class="time">5 minutes ago</div>
+                </div>
+              </li>
+              <li class="activity-item">
+                <div class="activity-icon" style="background:var(--success-green-soft); color:var(--success-green);"><i class="fa-solid fa-circle-check"></i></div>
+                <div class="activity-details">
+                  <div class="text">Claim CLM-9041 (₹45,000) payout disbursed</div>
+                  <div class="time">1 hour ago</div>
+                </div>
+              </li>
+              <li class="activity-item">
+                <div class="activity-icon" style="background:var(--cyan-accent-soft); color:var(--cyan-accent);"><i class="fa-solid fa-file-contract"></i></div>
+                <div class="activity-details">
+                  <div class="text">Term Life policy POL-9932 renewed</div>
+                  <div class="time">3 hours ago</div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- SETTINGS SECTION -->
+        <section id="admin-settings" class="table-card" style="margin-top:2rem;">
+          <h3 class="table-title">Administrator System Settings</h3>
+          <div class="admin-settings-grid">
+            <div class="feature-box">
+              <div class="icon"><i class="fa-solid fa-shield-halved"></i></div>
+              <div>
+                <h4>Security Settings</h4>
+                <p>2FA authentication, API key management, and session timeouts.</p>
+                <button class="btn btn-secondary btn-sm" style="margin-top:0.5rem;" onclick="showToast('Security settings configured.', 'success');">Configure</button>
+              </div>
+            </div>
+
+            <div class="feature-box">
+              <div class="icon"><i class="fa-solid fa-bell"></i></div>
+              <div>
+                <h4>Notification Rules</h4>
+                <p>Configure automated email alerts and claim threshold triggers.</p>
+                <button class="btn btn-secondary btn-sm" style="margin-top:0.5rem;" onclick="showToast('Notification rules saved.', 'success');">Manage Alerts</button>
+              </div>
+            </div>
+
+            <div class="feature-box">
+              <div class="icon"><i class="fa-solid fa-database"></i></div>
+              <div>
+                <h4>Database Backup</h4>
+                <p>Perform live database snapshots and export customer CSV logs.</p>
+                <button class="btn btn-secondary btn-sm" style="margin-top:0.5rem;" onclick="showToast('Backup scheduled.', 'info');">Run Backup</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/admin-dashboard.js"></script>
+</body>
+</html>

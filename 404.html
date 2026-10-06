@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 - Page Not Protected | Stackly Insurance</title>
+  <meta name="description" content="The page you are looking for does not exist or has been moved. Return home to protect your future with Stackly Insurance.">
+  
+  <!-- Google Fonts & Font Awesome CDN -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="container">
+      <nav class="navbar">
+        <a href="index.html" class="logo">
+          <div class="logo-icon"><i class="fa-solid fa-shield-halved"></i></div>
+          <div class="logo-text">Stackly<span>Insurance</span></div>
+        </a>
+
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="about.html" class="nav-link">About Us</a></li>
+          <li><a href="services.html" class="nav-link">Services</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+          <li><a href="login.html" class="nav-link">Login</a></li>
+          <li><a href="signup.html" class="nav-link">Signup</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <a href="index.html" class="btn btn-primary">Go Home <i class="fa-solid fa-house"></i></a>
+          <button class="mobile-toggle" aria-label="Toggle navigation menu"><i class="fa-solid fa-bars"></i></button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 404 CONTENT -->
+  <section class="section" style="padding-top: 10rem; padding-bottom: 6rem; text-align: center;">
+    <div class="container" style="max-width: 700px;">
+      
+      <!-- Insurance Themed Illustration -->
+      <svg viewBox="0 0 400 240" width="100%" max-width="380" height="auto" style="margin: 0 auto 2rem auto; display: block;">
+        <rect width="400" height="240" rx="16" fill="#f8fafc"/>
+        <!-- Shield with broken umbrella/path -->
+        <circle cx="200" cy="120" r="80" fill="#2563eb" opacity="0.1"/>
+        <path d="M200 50L270 90V150C270 190 200 220 200 220C200 220 130 190 130 150V90L200 50Z" fill="#2563eb"/>
+        <text x="200" y="150" text-anchor="middle" fill="#ffffff" font-size="48" font-weight="800">404</text>
+      </svg>
+
+      <div class="badge-tag" style="background:rgba(239, 68, 68, 0.12); color:var(--alert-red); margin-bottom:1rem;">
+        <i class="fa-solid fa-triangle-exclamation"></i> Error 404
+      </div>
+
+      <h1 class="section-title" style="font-size:2.75rem; margin-bottom:1rem;">Oops! This page is not protected.</h1>
+      
+      <p class="section-subtitle" style="margin-bottom:2.5rem;">
+        The page you are looking for might have been removed, renamed, or is temporarily unavailable. Let's get you back under proper coverage!
+      </p>
+
+      <div class="hero-btns" style="justify-content: center;">
+        <button onclick="history.back();" class="btn btn-secondary btn-lg">
+          <i class="fa-solid fa-arrow-left"></i> Go Back
+        </button>
+        <a href="index.html" class="btn btn-primary btn-lg">
+          Return to Home <i class="fa-solid fa-house"></i>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom" style="border-top:none; padding-top:0;">
+        <div>&copy; 2026 Stackly Insurance. All Rights Reserved.</div>
+        <div class="footer-legal">
+          <a href="index.html">Home</a>
+          <a href="contact.html">Support</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

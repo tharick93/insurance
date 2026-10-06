@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stackly Insurance | Customer Dashboard</title>
+  <meta name="description" content="Customer dashboard for Stackly Insurance policyholders. Track active policies, claims, payment trends, and download documents.">
+  <meta name="keywords" content="Stackly Insurance dashboard, policy management, insurance claims, payment receipts, policy documents">
+
+  <!-- Google Fonts & Font Awesome CDN -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Chart.js Library via CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body class="dashboard-body">
+
+  <div class="dashboard-layout">
+    <!-- SIDEBAR -->
+    <aside class="dashboard-sidebar">
+      <div>
+        <div class="sidebar-header">
+          <a href="index.html" class="logo">
+            <div class="logo-icon"><i class="fa-solid fa-shield-halved"></i></div>
+            <div class="logo-text">Stackly<span>Insurance</span></div>
+          </a>
+        </div>
+
+        <div class="menu-category">Main Menu</div>
+        <ul class="sidebar-menu">
+          <li><a href="#overview" class="sidebar-link active"><i class="fa-solid fa-chart-pie"></i> Dashboard</a></li>
+          <li><a href="#policies" class="sidebar-link"><i class="fa-solid fa-file-contract"></i> My Policies</a></li>
+          <li><a href="#claims" class="sidebar-link"><i class="fa-solid fa-hand-holding-medical"></i> My Claims</a></li>
+          <li><a href="#payments" class="sidebar-link"><i class="fa-solid fa-receipt"></i> Payments</a></li>
+          <li><a href="#documents" class="sidebar-link"><i class="fa-solid fa-folder-open"></i> Documents</a></li>
+          <li><a href="services.html" class="sidebar-link"><i class="fa-solid fa-shield-cat"></i> Explore Plans</a></li>
+        </ul>
+
+        <div class="menu-category">Account</div>
+        <ul class="sidebar-menu">
+          <li><a href="#support" class="sidebar-link"><i class="fa-solid fa-headset"></i> Support Desk</a></li>
+          <li><a href="#profile" class="sidebar-link"><i class="fa-solid fa-user"></i> My Profile</a></li>
+          <li><a href="#" class="sidebar-link btn-logout"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a></li>
+        </ul>
+      </div>
+
+      <!-- User Info Mini -->
+      <div class="sidebar-user-mini">
+        <div class="user-avatar-mini user-name-display">AS</div>
+        <div class="user-info-mini">
+          <div class="name user-name-display">Alex Smith</div>
+          <div class="role user-email-display">alex.smith@example.com</div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT WRAPPER -->
+    <div class="dashboard-main">
+      <!-- TOPBAR -->
+      <header class="dashboard-topbar">
+        <div class="topbar-left">
+          <button class="topbar-toggle" aria-label="Toggle Dashboard Sidebar"><i class="fa-solid fa-bars"></i></button>
+          <div class="topbar-search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" placeholder="Search policy, claim ID...">
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <div class="topbar-date" id="currentDateDisplay">Mon, Oct 5, 2026</div>
+          <button class="notification-bell" aria-label="Notifications">
+            <i class="fa-regular fa-bell"></i>
+            <span class="notification-badge">3</span>
+          </button>
+          <div class="topbar-profile" onclick="document.querySelector('#profile').scrollIntoView({behavior:'smooth'});">
+            <svg class="topbar-avatar" viewBox="0 0 100 100">
+              <circle cx="50" cy="50" r="50" fill="#2563eb"/>
+              <text x="50" y="58" text-anchor="middle" fill="#ffffff" font-size="32" font-weight="bold" class="user-name-display">AS</text>
+            </svg>
+            <div class="topbar-user-name user-name-display">Alex Smith</div>
+          </div>
+        </div>
+      </header>
+
+      <!-- CONTENT AREA -->
+      <main class="dashboard-content">
+        <!-- WELCOME BANNER -->
+        <section id="overview" class="welcome-banner">
+          <div class="welcome-text">
+            <h2>Welcome back, <span class="user-name-display">Alex</span>! 👋</h2>
+            <p>Here’s a real-time overview of your active insurance coverage and upcoming premiums.</p>
+          </div>
+          <div>
+            <button class="btn btn-cyan btn-raise-claim"><i class="fa-solid fa-plus"></i> File a Claim</button>
+          </div>
+        </section>
+
+        <!-- KPI METRICS GRID -->
+        <div class="kpi-grid">
+          <div class="kpi-card">
+            <div class="kpi-info">
+              <div class="title">Active Policies</div>
+              <div class="value counter" data-target="4">4</div>
+              <div class="subtext"><i class="fa-solid fa-shield-check"></i> 100% Protected</div>
+            </div>
+            <div class="kpi-icon blue"><i class="fa-solid fa-file-contract"></i></div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-info">
+              <div class="title">Total Coverage</div>
+              <div class="value">₹75,00,000</div>
+              <div class="subtext"><i class="fa-solid fa-arrow-up"></i> Full Health & Life</div>
+            </div>
+            <div class="kpi-icon green"><i class="fa-solid fa-vault"></i></div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-info">
+              <div class="title">Active Claims</div>
+              <div class="value counter" data-target="2">2</div>
+              <div class="subtext" style="color:var(--warning-amber);"><i class="fa-solid fa-spinner fa-spin"></i> Processing</div>
+            </div>
+            <div class="kpi-icon amber"><i class="fa-solid fa-hand-holding-medical"></i></div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-info">
+              <div class="title">Upcoming Payment</div>
+              <div class="value">₹8,500</div>
+              <div class="subtext"><i class="fa-solid fa-calendar"></i> Due Oct 20</div>
+            </div>
+            <div class="kpi-icon cyan"><i class="fa-solid fa-credit-card"></i></div>
+          </div>
+        </div>
+
+        <!-- CHARTS GRID -->
+        <div class="charts-grid">
+          <!-- Premium Payment Trend Line Chart -->
+          <div class="chart-card">
+            <div class="chart-header">
+              <h4>Premium Payment Trend</h4>
+              <span class="badge badge-active">Last 6 Months</span>
+            </div>
+            <div class="chart-container">
+              <canvas id="paymentTrendChart"></canvas>
+            </div>
+          </div>
+
+          <!-- Policy Distribution Doughnut Chart -->
+          <div class="chart-card">
+            <div class="chart-header">
+              <h4>Policy Category Distribution</h4>
+              <span class="badge badge-active">4 Active</span>
+            </div>
+            <div class="chart-container">
+              <canvas id="policyDistributionChart"></canvas>
+            </div>
+          </div>
+
+          <!-- Claims Overview Bar Chart -->
+          <div class="chart-card">
+            <div class="chart-header">
+              <h4>Claims Overview</h4>
+              <span class="badge badge-active">2026 Year</span>
+            </div>
+            <div class="chart-container">
+              <canvas id="claimsOverviewChart"></canvas>
+            </div>
+          </div>
+
+          <!-- Coverage Distribution Pie Chart -->
+          <div class="chart-card">
+            <div class="chart-header">
+              <h4>Total Sum Insured Breakdown</h4>
+              <span class="badge badge-active">₹75 Lakhs</span>
+            </div>
+            <div class="chart-container">
+              <canvas id="coverageDistributionChart"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- MY POLICIES TABLE SECTION -->
+        <section id="policies" class="table-card">
+          <div class="table-header">
+            <h3 class="table-title">My Insurance Policies</h3>
+            <div class="table-actions">
+              <input type="text" id="policySearchInput" class="search-filter-input" placeholder="Filter policies...">
+              <select id="policyStatusFilter" class="search-filter-input">
+                <option value="all">All Statuses</option>
+                <option value="active">Active</option>
+                <option value="pending">Pending</option>
+                <option value="expired">Expired</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Policy Number</th>
+                  <th>Insurance Type</th>
+                  <th>Coverage</th>
+                  <th>Annual Premium</th>
+                  <th>Status</th>
+                  <th>Expiry Date</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="policiesTableBody">
+                <tr>
+                  <td><strong>POL-8821</strong></td>
+                  <td>Health Optimum Shield</td>
+                  <td>₹25,00,000</td>
+                  <td>₹12,500</td>
+                  <td><span class="badge badge-active">Active</span></td>
+                  <td>15 Dec 2026</td>
+                  <td><button class="btn-table-action btn-view btn-download-doc" data-doc="Health_Policy_POL-8821">Download <i class="fa-solid fa-download"></i></button></td>
+                </tr>
+                <tr>
+                  <td><strong>POL-9932</strong></td>
+                  <td>Term Life Secure</td>
+                  <td>₹35,00,000</td>
+                  <td>₹18,000</td>
+                  <td><span class="badge badge-active">Active</span></td>
+                  <td>04 Jun 2027</td>
+                  <td><button class="btn-table-action btn-view btn-download-doc" data-doc="Life_Policy_POL-9932">Download <i class="fa-solid fa-download"></i></button></td>
+                </tr>
+                <tr>
+                  <td><strong>POL-4412</strong></td>
+                  <td>Comprehensive Car Cover</td>
+                  <td>₹10,00,000</td>
+                  <td>₹8,500</td>
+                  <td><span class="badge badge-pending">Renewal Pending</span></td>
+                  <td>20 Oct 2026</td>
+                  <td><button class="btn-table-action btn-approve" onclick="showToast('Payment successful! Policy renewed.', 'success');">Pay Now <i class="fa-solid fa-credit-card"></i></button></td>
+                </tr>
+                <tr>
+                  <td><strong>POL-2201</strong></td>
+                  <td>Home Property Protect</td>
+                  <td>₹5,00,000</td>
+                  <td>₹4,200</td>
+                  <td><span class="badge badge-expired">Expired</span></td>
+                  <td>12 Jan 2026</td>
+                  <td><button class="btn-table-action btn-view" onclick="showToast('Re-activating policy query sent.', 'info');">Re-Activate</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- CLAIMS SECTION -->
+        <section id="claims" class="table-card">
+          <div class="table-header">
+            <h3 class="table-title">My Insurance Claims History</h3>
+            <button class="btn btn-primary btn-sm btn-raise-claim"><i class="fa-solid fa-plus"></i> File New Claim</button>
+          </div>
+
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Claim ID</th>
+                  <th>Policy No</th>
+                  <th>Claim Type</th>
+                  <th>Claim Amount</th>
+                  <th>Incident Date</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>CLM-9041</strong></td>
+                  <td>POL-8821</td>
+                  <td>Medical Hospitalization</td>
+                  <td>₹45,000</td>
+                  <td>10 Aug 2026</td>
+                  <td><span class="badge badge-approved"><i class="fa-solid fa-check"></i> Approved &amp; Paid</span></td>
+                </tr>
+                <tr>
+                  <td><strong>CLM-9102</strong></td>
+                  <td>POL-4412</td>
+                  <td>Vehicle Fender Repair</td>
+                  <td>₹18,500</td>
+                  <td>28 Sep 2026</td>
+                  <td><span class="badge badge-pending"><i class="fa-solid fa-spinner fa-spin"></i> Under Verification</span></td>
+                </tr>
+                <tr>
+                  <td><strong>CLM-8819</strong></td>
+                  <td>POL-8821</td>
+                  <td>Outpatient Dental Cover</td>
+                  <td>₹3,500</td>
+                  <td>02 Feb 2026</td>
+                  <td><span class="badge badge-rejected"><i class="fa-solid fa-xmark"></i> Non-Covered Addon</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- RECENT TRANSACTIONS & UPCOMING PAYMENTS GRID -->
+        <div id="payments" class="charts-grid">
+          <!-- Recent Transactions -->
+          <div class="table-card" style="margin-bottom:0;">
+            <h4 style="font-size:1.1rem; margin-bottom:1rem;">Recent Premium Receipts</h4>
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Description</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>15 Dec 2025</td>
+                    <td>Health Optimum Renewal</td>
+                    <td>₹12,500</td>
+                    <td><span class="badge badge-success">Success</span></td>
+                  </tr>
+                  <tr>
+                    <td>04 Jun 2025</td>
+                    <td>Term Life Premium</td>
+                    <td>₹18,000</td>
+                    <td><span class="badge badge-success">Success</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Upcoming Payment Alert Card -->
+          <div class="card" style="display:flex; flex-direction:column; justify-content:space-between;">
+            <div>
+              <div class="badge-tag" style="background:rgba(245, 158, 11, 0.15); color:var(--warning-amber);"><i class="fa-solid fa-clock"></i> Payment Due Soon</div>
+              <h3 style="font-size:1.35rem; margin-bottom:0.5rem;">Car Insurance Premium Renewal</h3>
+              <p style="color:var(--text-muted); font-size:0.95rem;">Policy POL-4412 requires renewal payment by Oct 20, 2026 to keep full collision coverage active.</p>
+              <div style="font-size:1.85rem; font-weight:800; color:var(--primary-navy); margin:1rem 0;">₹8,500 <span>/ year</span></div>
+            </div>
+            <button class="btn btn-primary" onclick="showToast('Payment portal opened. Policy renewed!', 'success');">Pay Now via UPI / Card <i class="fa-solid fa-arrow-right"></i></button>
+          </div>
+        </div>
+
+        <!-- DOCUMENTS SECTION -->
+        <section id="documents" style="margin-top:2rem;">
+          <h3 style="font-size:1.25rem; margin-bottom:1rem;">Digital Vault Documents</h3>
+          <div class="docs-grid">
+            <div class="doc-card">
+              <i class="fa-solid fa-file-pdf"></i>
+              <h5>Health Policy Bond</h5>
+              <p>POL-8821 Verified Bond</p>
+              <button class="btn btn-secondary btn-sm btn-download-doc" data-doc="Health_Policy_Bond" style="width:100%;">Download TXT</button>
+            </div>
+
+            <div class="doc-card">
+              <i class="fa-solid fa-file-shield"></i>
+              <h5>Life Term Certificate</h5>
+              <p>POL-9932 Term Document</p>
+              <button class="btn btn-secondary btn-sm btn-download-doc" data-doc="Life_Term_Certificate" style="width:100%;">Download TXT</button>
+            </div>
+
+            <div class="doc-card">
+              <i class="fa-solid fa-receipt"></i>
+              <h5>Premium Tax Receipt</h5>
+              <p>Sec 80D Tax Benefit 2026</p>
+              <button class="btn btn-secondary btn-sm btn-download-doc" data-doc="Tax_Receipt_80D" style="width:100%;">Download TXT</button>
+            </div>
+
+            <div class="doc-card">
+              <i class="fa-solid fa-notes-medical"></i>
+              <h5>Health Card Pass</h5>
+              <p>Cashless Hospital Pass</p>
+              <button class="btn btn-secondary btn-sm btn-download-doc" data-doc="Cashless_Health_Pass" style="width:100%;">Download TXT</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- PROFILE & SUPPORT -->
+        <div class="charts-grid">
+          <!-- Support Card -->
+          <div id="support" class="card" style="background:linear-gradient(135deg, var(--primary-navy) 0%, var(--primary-navy-light) 100%); color:#ffffff;">
+            <h3 style="color:#ffffff; margin-bottom:0.5rem;">Need Assistance with Claims?</h3>
+            <p style="color:#cbd5e1; font-size:0.95rem; margin-bottom:1.5rem;">Our customer success helpline and claim advisors are live 24/7 to resolve queries.</p>
+            <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+              <a href="contact.html" class="btn btn-cyan">Contact Support <i class="fa-solid fa-headset"></i></a>
+              <button class="btn btn-outline-white btn-raise-claim">File Claim</button>
+            </div>
+          </div>
+
+          <!-- Profile Card -->
+          <div id="profile" class="card">
+            <h3 style="font-size:1.2rem; margin-bottom:1rem;">My Profile Details</h3>
+            <div style="display:flex; flex-direction:column; gap:0.6rem; font-size:0.9rem;">
+              <div><strong>Name:</strong> <span class="user-name-display">Alex Smith</span></div>
+              <div><strong>Email:</strong> <span class="user-email-display">alex.smith@example.com</span></div>
+              <div><strong>Phone:</strong> +91 98765 43210</div>
+              <div><strong>Address:</strong> Flat 402, Cyber Heights, Sector 45, Gurugram</div>
+              <button class="btn btn-secondary btn-sm" style="margin-top:0.5rem; align-self:flex-start;" onclick="showToast('Profile editing saved!', 'success');">Edit Profile</button>
+            </div>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/user-dashboard.js"></script>
+</body>
+</html>

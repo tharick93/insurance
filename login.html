@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stackly Insurance | Account Login</title>
+  <meta name="description" content="Sign in to your Stackly Insurance portal. Access policies, file claims, manage payments, or log in as administrator.">
+  <meta name="keywords" content="Stackly Insurance login, user dashboard login, admin portal login, insurance sign in">
+  
+  <meta property="og:title" content="Stackly Insurance | Login">
+  <meta property="og:description" content="Sign in to manage your health, life, vehicle, and home insurance policies.">
+
+  <!-- Google Fonts & Font Awesome CDN -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/auth.css">
+</head>
+<body class="auth-body">
+
+  <div class="auth-wrapper">
+    <!-- Left Banner -->
+    <div class="auth-banner">
+      <div>
+        <a href="index.html" class="logo">
+          <div class="logo-icon"><i class="fa-solid fa-shield-halved"></i></div>
+          <div class="logo-text">Stackly<span>Insurance</span></div>
+        </a>
+
+        <div class="auth-banner-content">
+          <h2>Welcome Back to Stackly Portal</h2>
+          <p>Access your active policies, track claim status in real-time, and download verified tax certificates.</p>
+
+          <ul class="auth-features-list">
+            <li><i class="fa-solid fa-circle-check"></i> 1-Click online claims tracking</li>
+            <li><i class="fa-solid fa-circle-check"></i> Instant policy renewals & payment receipts</li>
+            <li><i class="fa-solid fa-circle-check"></i> Dedicated customer support helpline</li>
+            <li><i class="fa-solid fa-circle-check"></i> Secure digital document vault</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="auth-banner-footer">
+        &copy; 2026 Stackly Insurance. Protecting What Matters Most.
+      </div>
+    </div>
+
+    <!-- Right Form Container -->
+    <div class="auth-form-container">
+      <div class="auth-header">
+        <h3>Sign In to Stackly</h3>
+        <p>Select your account role and enter your credentials</p>
+      </div>
+
+      <!-- Demo Banner Info -->
+     
+
+      <form id="loginForm">
+        <!-- Role Selector -->
+        <div class="role-selector-wrapper">
+          <label class="role-selector-label">Select Login Role:</label>
+          <div class="role-pills">
+            <div class="role-pill-option">
+              <input type="radio" id="roleUser" name="role" value="user" checked>
+              <label for="roleUser" class="role-pill-label">
+                <i class="fa-solid fa-user"></i> Customer / User
+              </label>
+            </div>
+
+            <div class="role-pill-option">
+              <input type="radio" id="roleAdmin" name="role" value="admin">
+              <label for="roleAdmin" class="role-pill-label">
+                <i class="fa-solid fa-user-gear"></i> Administrator
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Email Field -->
+        <div class="form-group">
+          <label class="form-label" for="loginEmail">Email Address</label>
+          <div class="input-wrapper">
+            <input type="email" id="loginEmail" class="form-input" placeholder="e.g. alex@example.com" required>
+            <i class="fa-solid fa-envelope input-icon"></i>
+          </div>
+        </div>
+
+        <!-- Password Field -->
+        <div class="form-group">
+          <label class="form-label" for="loginPassword">Password</label>
+          <div class="input-wrapper">
+            <input type="password" id="loginPassword" class="form-input" placeholder="••••••••" required>
+            <i class="fa-solid fa-lock input-icon"></i>
+            <button type="button" class="password-toggle" aria-label="Toggle password visibility"><i class="fa-solid fa-eye"></i></button>
+          </div>
+        </div>
+
+        <!-- Remember Me & Forgot Password -->
+        <div class="form-options">
+          <label class="checkbox-label">
+            <input type="checkbox" id="rememberMe">
+            <span>Remember me</span>
+          </label>
+          <a href="#" class="forgot-link" onclick="alert('Demo reset instructions sent to your email.'); return false;">Forgot Password?</a>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-primary auth-submit-btn">
+          Sign In to Portal <i class="fa-solid fa-right-to-bracket"></i>
+        </button>
+
+        <div class="auth-footer-link">
+          Don't have an account yet? <a href="signup.html">Create an Account</a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>

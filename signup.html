@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stackly Insurance | Create Account</title>
+  <meta name="description" content="Create your Stackly Insurance account to manage health, life, vehicle, and home insurance policies online with instant digital vault access.">
+  <meta name="keywords" content="Stackly Insurance signup, create insurance account, register policyholder, online insurance portal">
+  
+  <meta property="og:title" content="Stackly Insurance | Signup">
+  <meta property="og:description" content="Register for Stackly Insurance to access instant digital quotes, policy management, and fast claims.">
+
+  <!-- Google Fonts & Font Awesome CDN -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/auth.css">
+</head>
+<body class="auth-body">
+
+  <div class="auth-wrapper">
+    <!-- Left Banner -->
+    <div class="auth-banner">
+      <div>
+        <a href="index.html" class="logo">
+          <div class="logo-icon"><i class="fa-solid fa-shield-halved"></i></div>
+          <div class="logo-text">Stackly<span>Insurance</span></div>
+        </a>
+
+        <div class="auth-banner-content">
+          <h2>Start Protecting Your Future Today</h2>
+          <p>Join over 25,000 satisfied policyholders with instant digital access to claims and document vaults.</p>
+
+          <ul class="auth-features-list">
+            <li><i class="fa-solid fa-circle-check"></i> Instant policy generation in 5 minutes</li>
+            <li><i class="fa-solid fa-circle-check"></i> 98% claim settlement ratio</li>
+            <li><i class="fa-solid fa-circle-check"></i> Zero paperwork digital management</li>
+            <li><i class="fa-solid fa-circle-check"></i> 24/7 priority customer helpline</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="auth-banner-footer">
+        &copy; 2026 Stackly Insurance. Smart Protection. Secure Future.
+      </div>
+    </div>
+
+    <!-- Right Form Container -->
+    <div class="auth-form-container">
+      <div class="auth-header">
+        <h3>Create Your Account</h3>
+        <p>Enter your details to open your policyholder portal</p>
+      </div>
+
+      <form id="signupForm">
+        <!-- Full Name -->
+        <div class="form-group">
+          <label class="form-label">Full Name *</label>
+          <div class="input-wrapper">
+            <input type="text" id="signupName" class="form-input" placeholder="Alex Smith" required>
+            <i class="fa-solid fa-user input-icon"></i>
+          </div>
+        </div>
+
+        <!-- Email & Phone Grid -->
+        <div class="hero-grid signup-fields-grid">
+          <div class="form-group">
+            <label class="form-label">Email Address *</label>
+            <div class="input-wrapper">
+              <input type="email" id="signupEmail" class="form-input" placeholder="alex@example.com" required>
+              <i class="fa-solid fa-envelope input-icon"></i>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Phone Number *</label>
+            <div class="input-wrapper">
+              <input type="tel" id="signupPhone" class="form-input" placeholder="+91 98765 43210" required>
+              <i class="fa-solid fa-phone input-icon"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- DOB & Preferred Insurance -->
+        <div class="hero-grid signup-fields-grid">
+          <div class="form-group">
+            <label class="form-label">Date of Birth *</label>
+            <div class="input-wrapper">
+              <input type="date" id="signupDob" class="form-input" required>
+              <i class="fa-solid fa-calendar input-icon"></i>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Insurance Type</label>
+            <div class="input-wrapper">
+              <select id="signupInsuranceType" class="form-select">
+                <option value="health">Health Insurance</option>
+                <option value="life">Life Insurance</option>
+                <option value="vehicle">Vehicle Insurance</option>
+                <option value="home">Home Insurance</option>
+                <option value="travel">Travel Insurance</option>
+                <option value="business">Business Insurance</option>
+              </select>
+              <i class="fa-solid fa-shield-cat input-icon"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Password & Confirm Password Grid -->
+        <div class="hero-grid signup-fields-grid">
+          <div class="form-group">
+            <label class="form-label">Password *</label>
+            <div class="input-wrapper">
+              <input type="password" id="signupPassword" class="form-input" placeholder="••••••••" required>
+              <i class="fa-solid fa-lock input-icon"></i>
+              <button type="button" class="password-toggle" aria-label="Toggle password visibility"><i class="fa-solid fa-eye"></i></button>
+            </div>
+            <div class="strength-meter">
+              <div class="strength-bar"></div>
+            </div>
+            <span class="strength-text">Password strength</span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Confirm Password *</label>
+            <div class="input-wrapper">
+              <input type="password" id="signupConfirmPassword" class="form-input" placeholder="••••••••" required>
+              <i class="fa-solid fa-lock input-icon"></i>
+              <button type="button" class="password-toggle" aria-label="Toggle password visibility"><i class="fa-solid fa-eye"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Terms & Conditions Checkbox -->
+        <div class="form-group" style="margin-top: 0.5rem;">
+          <label class="checkbox-label">
+            <input type="checkbox" id="signupTerms" required>
+            <span>I agree to Stackly Insurance <a href="#" class="forgot-link">Terms of Service</a> &amp; <a href="#" class="forgot-link">Privacy Policy</a></span>
+          </label>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-primary auth-submit-btn">Create Account <i class="fa-solid fa-user-plus"></i></button>
+
+        <div class="auth-footer-link">
+          Already have an account? <a href="login.html">Sign In Here</a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>
